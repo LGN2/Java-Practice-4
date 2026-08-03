@@ -129,4 +129,21 @@ public class StudentManagementSystem {
         }
 
     }
+
+    public static Integer addStudent(
+            String[] studentNames,
+            Integer studentCount,
+            String studentName){
+
+        if (studentCount < studentNames.length) {
+            studentNames[studentCount] = studentName;
+            studentCount++;
+            IO.println("Student Added Successfully");
+        }else {
+            IO.println("Student List Is Full.");
+        }
+        return studentCount;
+    }
+
+    
 }
