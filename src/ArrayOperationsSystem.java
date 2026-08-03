@@ -5,6 +5,7 @@ public class ArrayOperationsSystem {
 
     public static void main(String[] args) {
 
+
         Scanner sc = new Scanner(System.in);
 
         Integer[] numbers;
@@ -89,6 +90,8 @@ public class ArrayOperationsSystem {
     public static Double calculateAverage(
             Integer sum,
             Integer size) {
+//          Double result = Integer.valueOf(sum / size).doubleValue();
+//          return result;
         return sum.doubleValue() / size.doubleValue();
     }
 
