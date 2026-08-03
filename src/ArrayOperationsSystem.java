@@ -73,7 +73,6 @@ public class ArrayOperationsSystem {
     }
 
 
-    // Calculate sum of array
     public static Integer calculateSum(Integer[] numbers) {
 
         Integer sum = 0;
@@ -87,7 +86,6 @@ public class ArrayOperationsSystem {
     }
 
 
-    // Calculate average
     public static Double calculateAverage(
             Integer sum,
             Integer size) {
@@ -96,7 +94,6 @@ public class ArrayOperationsSystem {
     }
 
 
-    // Find highest value
     public static Integer findHighest(Integer[] numbers) {
 
         Integer highestNumber = numbers[0];
@@ -113,7 +110,6 @@ public class ArrayOperationsSystem {
     }
 
 
-    // Find lowest value
     public static Integer findLowest(Integer[] numbers) {
 
         Integer lowestNumber = numbers[0];
@@ -130,7 +126,6 @@ public class ArrayOperationsSystem {
     }
 
 
-    // Search for a number
     public static void searchNumber(
             Integer[] numbers,
             Integer searchNumber) {
@@ -141,7 +136,7 @@ public class ArrayOperationsSystem {
 
             if (numbers[i].equals(searchNumber)) {
 
-                System.out.println("Number found at index: " + i);
+                IO.println("Number found at index: " + i);
 
                 found = true;
                 break;
@@ -151,7 +146,7 @@ public class ArrayOperationsSystem {
 
         if (!found) {
 
-            System.out.println("Number not found.");
+            IO.println("Number not found.");
         }
     }
 
