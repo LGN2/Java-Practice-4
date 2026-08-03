@@ -33,28 +33,22 @@ public class ArrayOperationsSystem {
         IO.println("Highest Number: " + highestNumber);
         IO.println("Lowest Number: " + lowestNumber);
 
-
-        // Search number
-        System.out.print("\nEnter number to search: ");
+        IO.print("\nEnter number to search: ");
         searchNumber = input.nextInt();
 
         searchNumber(numbers, searchNumber);
 
-
-        // Update array value
-        System.out.print("\nEnter index to update (0-9): ");
+        IO.print("\nEnter index to update (0-9): ");
         updateIndex = input.nextInt();
 
-        System.out.print("Enter new value: ");
+        IO.print("Enter new value: ");
         updateValue = input.nextInt();
 
         updateArray(numbers, updateIndex, updateValue);
 
-        System.out.println("\nArray After Updating:");
+        IO.println("\nArray After Updating:");
         displayArray(numbers);
 
-
-        // Reverse array
         reverseArray(numbers);
 
         System.out.println("\nArray After Reversing:");
