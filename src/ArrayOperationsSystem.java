@@ -89,8 +89,7 @@ public class ArrayOperationsSystem {
     public static Double calculateAverage(
             Integer sum,
             Integer size) {
-
-        return (Double) (sum / size);
+            return sum.doubleValue() / size.doubleValue();
     }
 
 
