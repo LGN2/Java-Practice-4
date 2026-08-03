@@ -5,10 +5,8 @@ public class ArrayOperationsSystem {
 
     public static void main(String[] args) {
 
-        // Create scanner
         Scanner input = new Scanner(System.in);
 
-        // Declare variables
         Integer[] numbers;
         Integer searchNumber;
         Integer updateIndex;
@@ -19,25 +17,21 @@ public class ArrayOperationsSystem {
         Integer highestNumber;
         Integer lowestNumber;
 
-        // Create array
         numbers = new Integer[]{45, 12, 78, 34, 90, 23, 56, 10, 67, 89};
 
-        // Display original array
-        System.out.println("Original Array:");
+        IO.println("Original Array:");
         displayArray(numbers);
 
-        // Calculate statistics
         sum = calculateSum(numbers);
         average = calculateAverage(sum, numbers.length);
         highestNumber = findHighest(numbers);
         lowestNumber = findLowest(numbers);
 
-        // Display statistics
-        System.out.println("\n========== ARRAY STATISTICS ==========");
-        System.out.println("Sum: " + sum);
-        System.out.println("Average: " + average);
-        System.out.println("Highest Number: " + highestNumber);
-        System.out.println("Lowest Number: " + lowestNumber);
+        IO.println("\n========== ARRAY STATISTICS ==========");
+        IO.println("Sum: " + sum);
+        IO.println("Average: " + average);
+        IO.println("Highest Number: " + highestNumber);
+        IO.println("Lowest Number: " + lowestNumber);
 
 
         // Search number
@@ -109,7 +103,7 @@ public class ArrayOperationsSystem {
             Integer sum,
             Integer size) {
 
-        return (Double) sum / size;
+        return (Double) (sum / size);
     }
 
 
