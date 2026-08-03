@@ -5,7 +5,7 @@ public class ArrayOperationsSystem {
 
     public static void main(String[] args) {
 
-        Scanner input = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
         Integer[] numbers;
         Integer searchNumber;
@@ -34,15 +34,15 @@ public class ArrayOperationsSystem {
         IO.println("Lowest Number: " + lowestNumber);
 
         IO.print("\nEnter number to search: ");
-        searchNumber = input.nextInt();
+        searchNumber = sc.nextInt();
 
         searchNumber(numbers, searchNumber);
 
         IO.print("\nEnter index to update (0-9): ");
-        updateIndex = input.nextInt();
+        updateIndex = sc.nextInt();
 
         IO.print("Enter new value: ");
-        updateValue = input.nextInt();
+        updateValue = sc.nextInt();
 
         updateArray(numbers, updateIndex, updateValue);
 
@@ -51,18 +51,15 @@ public class ArrayOperationsSystem {
 
         reverseArray(numbers);
 
-        System.out.println("\nArray After Reversing:");
+        IO.println("\nArray After Reversing:");
         displayArray(numbers);
 
-
-        // Sort array
         sortArray(numbers);
 
-        System.out.println("\nArray After Sorting:");
+        IO.println("\nArray After Sorting:");
         displayArray(numbers);
 
-
-        input.close();
+        sc.close();
     }
 
 
