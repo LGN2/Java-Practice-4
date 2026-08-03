@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 public class StudentManagementSystem {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        String [] studentNames;
+        String[] studentNames;
         Integer studentCount;
         Integer choice;
         String studentName;
@@ -115,5 +115,18 @@ public class StudentManagementSystem {
         } while (choice != 7);
 
         sc.close();
+    }
+
+    public static void displayStudents(
+            String[] studentNames,
+            Integer studentCount) {
+
+        IO.println("\n========== STUDENT LIST ==========");
+
+        for (Integer i = 0; i < studentCount; i++) {
+
+            IO.println((i + 1) + ". " + studentNames[i]);
+        }
+
     }
 }
