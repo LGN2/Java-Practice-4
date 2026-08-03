@@ -145,5 +145,10 @@ public class StudentManagementSystem {
         return studentCount;
     }
 
-    
+    public static void searchStudent(
+            String[] studentNames,
+            Integer studentCount,
+            String studentName) {
+        
+    }
 }
