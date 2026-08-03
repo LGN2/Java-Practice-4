@@ -62,16 +62,14 @@ public class ArrayOperationsSystem {
         sc.close();
     }
 
-
-    // Display array elements
     public static void displayArray(Integer[] numbers) {
 
         for (Integer number : numbers) {
 
-            System.out.print(number + " ");
+            IO.print(number + " ");
         }
 
-        System.out.println();
+        IO.println();
     }
 
 
