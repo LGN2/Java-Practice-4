@@ -9,6 +9,7 @@ public class StudentManagementSystem {
         Integer choice;
         String studentName;
         Integer index;
-        
+
+        studentNames = new String[10];
     }
 }
