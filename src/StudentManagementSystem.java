@@ -149,6 +149,22 @@ public class StudentManagementSystem {
             String[] studentNames,
             Integer studentCount,
             String studentName) {
-        
+
+        Boolean found = false;
+
+        for (Integer i = 0; i < studentCount; i++){
+            if (studentNames[i].equalsIgnoreCase(studentName)){
+                IO.println("Student Found At Index: "+i);
+                found = true;
+                break;
+            }
+        }
+        if (!found){
+            IO.println("Student Not Found.");
+        }
     }
+
+    public static void updateStudent(
+            
+    )
 }
