@@ -151,7 +151,6 @@ public class ArrayOperationsSystem {
     }
 
 
-    // Update array value
     public static void updateArray(
             Integer[] numbers,
             Integer index,
@@ -162,16 +161,15 @@ public class ArrayOperationsSystem {
 
             numbers[index] = newValue;
 
-            System.out.println("Value updated successfully.");
+            IO.println("Value updated successfully.");
 
         } else {
 
-            System.out.println("Invalid index.");
+            IO.println("Invalid index.");
         }
     }
 
 
-    // Reverse array
     public static void reverseArray(Integer[] numbers) {
 
         Integer start = 0;
@@ -189,9 +187,7 @@ public class ArrayOperationsSystem {
             end--;
         }
     }
-
-
-    // Sort array
+    
     public static void sortArray(Integer[] numbers) {
 
         Arrays.sort(numbers);
