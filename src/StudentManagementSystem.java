@@ -174,5 +174,23 @@ public class StudentManagementSystem {
             IO.println("Student Updated Successfully.");
         }
     }
+
+    public static Integer removeStudent(
+            String[] studentNames,
+            Integer studentCount,
+            Integer index) {
+        if (index >= 0 && index < studentCount){
+            for (Integer i = index; i < studentCount - 1; i++){
+                studentNames[i] = studentNames[i + 1];
+            }
+            studentNames[studentCount - 1] = null;
+            studentCount--;
+            IO.println("Student Removed Successfully.");
+        }else {
+            IO.println("Invalid Student Index.");
+        }
+        return studentCount;
+    }
+
     
 }
