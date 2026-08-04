@@ -1,34 +1,42 @@
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class StudentManagementSystem {
+
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
 
-        String[] studentNames;
-        Integer studentCount = 0;
+        ArrayList<String> students = new ArrayList<String>();
+
         Integer choice;
-        String studentName;
         Integer index;
+        String studentName;
 
-        studentNames = new String[10];
-
-        studentNames[0] = "Almajd";
-        studentNames[1] = "Abdulrahman";
-        studentNames[2] = "Abdulaziz";
-        studentNames[3] = "Suliman";
-        studentNames[4] = "Mohammed";
+        // Add 10 students
+        students.add("Ali");
+        students.add("Sara");
+        students.add("Omar");
+        students.add("Ahmed");
+        students.add("Khalid");
+        students.add("Fatima");
+        students.add("Aisha");
+        students.add("Mohammed");
+        students.add("Salim");
+        students.add("Noor");
 
         do {
 
             IO.println("\n========== STUDENT MANAGEMENT SYSTEM ==========");
             IO.println("1. Display Students");
             IO.println("2. Add Student");
-            IO.println("3. Search Student");
-            IO.println("4. Update Student");
+            IO.println("3. Update Student");
+            IO.println("4. Search Student");
             IO.println("5. Remove Student");
-            IO.println("6. Sort Students");
-            IO.println("7. Exit");
+            IO.println("6. Student Analysis");
+            IO.println("7. Sort Students");
+            IO.println("8. Exit");
             IO.print("Enter your choice: ");
 
             choice = sc.nextInt();
@@ -38,164 +46,269 @@ public class StudentManagementSystem {
 
                 case 1:
 
-                    displayStudents(studentNames, studentCount);
+                    displayStudents(students);
                     break;
 
                 case 2:
 
-                    System.out.print("Enter Student Name: ");
+                    IO.println("\n1. Add at End");
+                    IO.println("2. Add at Specific Position");
+                    IO.print("Choice: ");
+
+                    Integer addChoice = sc.nextInt();
+                    sc.nextLine();
+
+                    IO.print("Enter student name: ");
                     studentName = sc.nextLine();
 
-                    studentCount = addStudent(
-                            studentNames,
-                            studentCount,
-                            studentName);
+                    if (addChoice == 1) {
+
+                        addStudent(students, studentName);
+
+                    } else if (addChoice == 2) {
+
+                        IO.print("Enter position: ");
+                        index = sc.nextInt();
+                        sc.nextLine();
+
+                        addStudentAtPosition(
+                                students,
+                                index,
+                                studentName);
+
+                    } else {
+
+                        IO.println("Invalid choice.");
+                    }
 
                     break;
 
                 case 3:
 
-                    System.out.print("Enter Student Name: ");
+                    IO.print("Enter student index: ");
+                    index = sc.nextInt();
+                    sc.nextLine();
+
+                    IO.print("Enter new name: ");
                     studentName = sc.nextLine();
 
-                    searchStudent(
-                            studentNames,
-                            studentCount,
+                    updateStudent(
+                            students,
+                            index,
                             studentName);
 
                     break;
 
                 case 4:
 
-                    System.out.print("Enter Student Index: ");
-                    index = sc.nextInt();
-                    sc.nextLine();
-
-                    System.out.print("Enter New Student Name: ");
+                    IO.print("Enter student name to search: ");
                     studentName = sc.nextLine();
 
-                    updateStudent(
-                            studentNames,
-                            studentCount,
-                            index,
+                    searchStudent(
+                            students,
                             studentName);
 
                     break;
 
                 case 5:
 
-                    System.out.print("Enter Student Index: ");
-                    index = sc.nextInt();
+                    IO.println("\n1. Remove by Name");
+                    IO.println("2. Remove by Index");
+                    IO.print("Choice: ");
 
-                    studentCount = removeStudent(
-                            studentNames,
-                            studentCount,
-                            index);
+                    Integer removeChoice = sc.nextInt();
+                    sc.nextLine();
+
+                    if (removeChoice == 1) {
+
+                        IO.print("Enter student name: ");
+                        studentName = sc.nextLine();
+
+                        removeStudentByName(
+                                students,
+                                studentName);
+
+                    } else if (removeChoice == 2) {
+
+                        IO.print("Enter index: ");
+                        index = sc.nextInt();
+
+                        removeStudentByIndex(
+                                students,
+                                index);
+
+                    } else {
+
+                        IO.println("Invalid choice.");
+                    }
 
                     break;
 
                 case 6:
 
-                    sortStudents(
-                            studentNames,
-                            studentCount);
-
-                    System.out.println("Students Sorted Successfully.");
+                    analyzeStudents(students);
                     break;
 
                 case 7:
 
-                    System.out.println("Program Ended.");
+                    sortStudents(students);
+                    break;
+
+                case 8:
+
+                    IO.println("Program Ended.");
                     break;
 
                 default:
 
-                    System.out.println("Invalid Menu Choice.");
+                    IO.println("Invalid choice.");
             }
 
-        } while (choice != 7);
+        } while (choice != 8);
 
         sc.close();
     }
 
     public static void displayStudents(
-            String[] studentNames,
-            Integer studentCount) {
+            ArrayList<String> students) {
 
         IO.println("\n========== STUDENT LIST ==========");
 
-        for (Integer i = 0; i < studentCount; i++) {
+        IO.println("Total Students: " + students.size());
 
-            IO.println((i + 1) + ". " + studentNames[i]);
+        for (Integer i = 0; i < students.size(); i++) {
+
+            IO.println("Student " + i + ": " + students.get(i));
         }
-
     }
 
-    public static Integer addStudent(
-            String[] studentNames,
-            Integer studentCount,
+    public static void addStudent(
+            ArrayList<String> students,
             String studentName) {
 
-        if (studentCount < studentNames.length) {
-            studentNames[studentCount] = studentName;
-            studentCount++;
-            IO.println("Student Added Successfully");
+        students.add(studentName);
+
+        IO.println("Student added successfully.");
+
+        displayStudents(students);
+    }
+
+    public static void addStudentAtPosition(
+            ArrayList<String> students,
+            Integer index,
+            String studentName) {
+
+        if (index >= 0 && index <= students.size()) {
+
+            students.add(index, studentName);
+
+            IO.println("Student added successfully.");
+
         } else {
-            IO.println("Student List Is Full.");
-        }
-        return studentCount;
-    }
 
-    public static void searchStudent(
-            String[] studentNames,
-            Integer studentCount,
-            String studentName) {
-
-        Boolean found = false;
-
-        for (Integer i = 0; i < studentCount; i++) {
-            if (studentNames[i].equalsIgnoreCase(studentName)) {
-                IO.println("Student Found At Index: " + i);
-                found = true;
-                break;
-            }
+            IO.println("Invalid index.");
         }
-        if (!found) {
-            IO.println("Student Not Found.");
-        }
+
+        displayStudents(students);
     }
 
     public static void updateStudent(
-            String[] studentNames,
-            Integer studentCount,
+            ArrayList<String> students,
             Integer index,
             String studentName) {
-        if (index >= 0 && index < studentCount) {
-            studentNames[index] = studentName;
-            IO.println("Student Updated Successfully.");
+
+        if (index >= 0 && index < students.size()) {
+
+            students.set(index, studentName);
+
+            IO.println("Student updated successfully.");
+
+        } else {
+
+            IO.println("Invalid index.");
+        }
+
+        displayStudents(students);
+    }
+
+    public static void searchStudent(
+            ArrayList<String> students,
+            String studentName) {
+
+        if (students.contains(studentName)) {
+
+            IO.println("Student found.");
+            IO.println("Index: " + students.indexOf(studentName));
+
+        } else {
+
+            IO.println("Student not found.");
         }
     }
 
-    public static Integer removeStudent(
-            String[] studentNames,
-            Integer studentCount,
-            Integer index) {
-        if (index >= 0 && index < studentCount) {
-            for (Integer i = index; i < studentCount - 1; i++) {
-                studentNames[i] = studentNames[i + 1];
-            }
-            studentNames[studentCount - 1] = null;
-            studentCount--;
-            IO.println("Student Removed Successfully.");
+    public static void removeStudentByName(
+            ArrayList<String> students,
+            String studentName) {
+
+        if (students.remove(studentName)) {
+
+            IO.println("Student removed successfully.");
+
         } else {
-            IO.println("Invalid Student Index.");
+
+            IO.println("Student not found.");
         }
-        return studentCount;
+
+        displayStudents(students);
+    }
+
+    public static void removeStudentByIndex(
+            ArrayList<String> students,
+            Integer index) {
+
+        if (index >= 0 && index < students.size()) {
+
+            students.remove(index);
+
+            IO.println("Student removed successfully.");
+
+        } else {
+
+            IO.println("Invalid index.");
+        }
+
+        displayStudents(students);
+    }
+
+    public static void analyzeStudents(
+            ArrayList<String> students) {
+
+        IO.println("\n========== STUDENT ANALYSIS ==========");
+
+        IO.println("Total Students: " + students.size());
+
+        IO.println("Is Empty: " + students.isEmpty());
+
+        if (!students.isEmpty()) {
+
+            IO.println("First Student: " + students.get(0));
+
+            IO.println("Last Student: " + students.get(students.size() - 1));
+        }
     }
 
     public static void sortStudents(
-            String[] studentNames,
-            Integer studentCount) {
-        Arrays.sort(studentNames, 0, studentCount);
+            ArrayList<String> students) {
+
+        ArrayList<String> sortedStudents =
+                new ArrayList<String>(students);
+
+        Collections.sort(sortedStudents);
+
+        IO.println("\nOriginal List:");
+        IO.println(students);
+
+        IO.println("\nSorted List:");
+        IO.println(sortedStudents);
     }
 }
