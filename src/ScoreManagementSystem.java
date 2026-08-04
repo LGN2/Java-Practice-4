@@ -11,6 +11,13 @@ public class ScoreManagementSystem {
         Integer score;
         Integer index;
 
-        
+        studentScores = new ArrayList<>();
+
+        studentScores.add(85);
+        studentScores.add(85);
+        studentScores.add(85);
+        studentScores.add(85);
+        studentScores.add(85);
+        studentScores.add(85);
     }
 }
