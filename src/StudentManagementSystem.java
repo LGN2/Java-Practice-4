@@ -134,13 +134,13 @@ public class StudentManagementSystem {
     public static Integer addStudent(
             String[] studentNames,
             Integer studentCount,
-            String studentName){
+            String studentName) {
 
         if (studentCount < studentNames.length) {
             studentNames[studentCount] = studentName;
             studentCount++;
             IO.println("Student Added Successfully");
-        }else {
+        } else {
             IO.println("Student List Is Full.");
         }
         return studentCount;
@@ -153,14 +153,14 @@ public class StudentManagementSystem {
 
         Boolean found = false;
 
-        for (Integer i = 0; i < studentCount; i++){
-            if (studentNames[i].equalsIgnoreCase(studentName)){
-                IO.println("Student Found At Index: "+i);
+        for (Integer i = 0; i < studentCount; i++) {
+            if (studentNames[i].equalsIgnoreCase(studentName)) {
+                IO.println("Student Found At Index: " + i);
                 found = true;
                 break;
             }
         }
-        if (!found){
+        if (!found) {
             IO.println("Student Not Found.");
         }
     }
@@ -180,14 +180,14 @@ public class StudentManagementSystem {
             String[] studentNames,
             Integer studentCount,
             Integer index) {
-        if (index >= 0 && index < studentCount){
-            for (Integer i = index; i < studentCount - 1; i++){
+        if (index >= 0 && index < studentCount) {
+            for (Integer i = index; i < studentCount - 1; i++) {
                 studentNames[i] = studentNames[i + 1];
             }
             studentNames[studentCount - 1] = null;
             studentCount--;
             IO.println("Student Removed Successfully.");
-        }else {
+        } else {
             IO.println("Invalid Student Index.");
         }
         return studentCount;
