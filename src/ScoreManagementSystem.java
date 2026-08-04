@@ -14,10 +14,16 @@ public class ScoreManagementSystem {
         studentScores = new ArrayList<>();
 
         studentScores.add(85);
-        studentScores.add(85);
-        studentScores.add(85);
-        studentScores.add(85);
-        studentScores.add(85);
-        studentScores.add(85);
+        studentScores.add(92);
+        studentScores.add(77);
+        studentScores.add(90);
+        studentScores.add(100);
+        studentScores.add(50);
+        studentScores.add(81);
+        studentScores.add(69);
+        studentScores.add(98);
+        studentScores.add(70);
+
+        
     }
 }
