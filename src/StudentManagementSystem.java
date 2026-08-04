@@ -165,6 +165,14 @@ public class StudentManagementSystem {
     }
 
     public static void updateStudent(
-            
-    )
+            String[] studentNames,
+            Integer studentCount,
+            Integer index,
+            String studentName) {
+        if (index >= 0 && index < studentCount) {
+            studentNames[index] = studentName;
+            IO.println("Student Updated Successfully.");
+        }
+    }
+    
 }
