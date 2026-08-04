@@ -27,6 +27,7 @@ public class ScoreManagementSystem {
         scores.add(85);
 
         Integer choice;
+
         do {
 
             IO.println("\n========== SCORE MANAGEMENT SYSTEM ==========");
@@ -79,7 +80,7 @@ public class ScoreManagementSystem {
 
                     updateScore(scores, index, newScore);
 
-                    IO.println("Updated Scores:");
+                    IO.println("\nUpdated Scores:");
                     displayScores(scores);
                     break;
 
@@ -90,7 +91,7 @@ public class ScoreManagementSystem {
 
                     removeByValue(scores, removeValue);
 
-                    IO.println("Updated Scores:");
+                    IO.println("\nUpdated Scores:");
                     displayScores(scores);
                     break;
 
@@ -101,7 +102,7 @@ public class ScoreManagementSystem {
 
                     removeByIndex(scores, removeIndex);
 
-                    IO.println("Updated Scores:");
+                    IO.println("\nUpdated Scores:");
                     displayScores(scores);
                     break;
 
@@ -128,53 +129,7 @@ public class ScoreManagementSystem {
         } while (choice != 10);
 
         sc.close();
-
-        IO.println("========== SCORE INFORMATION ==========");
-        displayScores(scores);
-
-        IO.println("\n========== SCORE STATISTICS ==========");
-        displayStatistics(scores);
-
-        IO.println("\n========== SCORE CLASSIFICATION ==========");
-        classifyScores(scores);
-
-        IO.print("\nEnter score to search: ");
-        Integer searchScore = sc.nextInt();
-        searchScore(scores, searchScore);
-
-        IO.print("\nEnter index to update: ");
-        Integer index = sc.nextInt();
-
-        IO.print("Enter new score: ");
-        Integer newScore = sc.nextInt();
-
-        updateScore(scores, index, newScore);
-
-        IO.println("\nUpdated Scores:");
-        displayScores(scores);
-
-        IO.print("\nEnter score value to remove: ");
-        Integer removeValue = sc.nextInt();
-        removeByValue(scores, removeValue);
-
-        IO.println("\nScores After Removing By Value:");
-        displayScores(scores);
-
-        IO.print("\nEnter index to remove: ");
-        Integer removeIndex = sc.nextInt();
-        removeByIndex(scores, removeIndex);
-
-        IO.println("\nScores After Removing By Index:");
-        displayScores(scores);
-
-        sortAndReverse(scores);
-
-
-        clearScores(scores);
-
-        sc.close();
     }
-
 
 
     public static void displayScores(ArrayList<Integer> scores) {
@@ -188,8 +143,13 @@ public class ScoreManagementSystem {
     }
 
 
-
     public static void displayStatistics(ArrayList<Integer> scores) {
+
+        if (scores.isEmpty()) {
+
+            IO.println("No scores available.");
+            return;
+        }
 
         Integer total = 0;
         Integer highest = scores.get(0);
@@ -210,7 +170,7 @@ public class ScoreManagementSystem {
             }
         }
 
-        Double average = (Double) total.doubleValue() / scores.size();
+        Double average = total.doubleValue() / scores.size();
 
         IO.println("Total Score: " + total);
         IO.println("Average Score: " + average);
@@ -219,8 +179,13 @@ public class ScoreManagementSystem {
     }
 
 
-
     public static void classifyScores(ArrayList<Integer> scores) {
+
+        if (scores.isEmpty()) {
+
+            IO.println("No scores available.");
+            return;
+        }
 
         Integer passed = 0;
         Integer failed = 0;
@@ -232,6 +197,7 @@ public class ScoreManagementSystem {
             if (score >= 60) {
 
                 passed++;
+
             } else {
 
                 failed++;
@@ -258,6 +224,12 @@ public class ScoreManagementSystem {
     public static void searchScore(
             ArrayList<Integer> scores,
             Integer value) {
+
+        if (scores.isEmpty()) {
+
+            IO.println("No scores available.");
+            return;
+        }
 
         Boolean found = false;
         Integer firstIndex = -1;
@@ -290,11 +262,16 @@ public class ScoreManagementSystem {
     }
 
 
-
     public static void updateScore(
             ArrayList<Integer> scores,
             Integer index,
             Integer newScore) {
+
+        if (scores.isEmpty()) {
+
+            IO.println("No scores available.");
+            return;
+        }
 
         if (index >= 0 && index < scores.size()) {
 
@@ -309,10 +286,15 @@ public class ScoreManagementSystem {
     }
 
 
-
     public static void removeByValue(
             ArrayList<Integer> scores,
             Integer value) {
+
+        if (scores.isEmpty()) {
+
+            IO.println("No scores available.");
+            return;
+        }
 
         if (scores.remove(value)) {
 
@@ -325,14 +307,19 @@ public class ScoreManagementSystem {
     }
 
 
-
     public static void removeByIndex(
             ArrayList<Integer> scores,
             Integer index) {
 
+        if (scores.isEmpty()) {
+
+            IO.println("No scores available.");
+            return;
+        }
+
         if (index >= 0 && index < scores.size()) {
 
-            scores.remove((int) index);
+            scores.remove(index.intValue());
 
             IO.println("Score removed successfully.");
 
@@ -343,29 +330,36 @@ public class ScoreManagementSystem {
     }
 
 
+    public static void sortAndReverse(
+            ArrayList<Integer> scores) {
 
-    public static void sortAndReverse(ArrayList<Integer> scores) {
+        if (scores.isEmpty()) {
 
-        ArrayList<Integer> sortedScores = new ArrayList<>(scores);
+            IO.println("No scores available.");
+            return;
+        }
+
+        ArrayList<Integer> sortedScores =
+                new ArrayList<>(scores);
 
         Collections.sort(sortedScores);
 
-        IO.println("\nAscending:");
+        IO.println("Ascending:");
         IO.println(sortedScores);
 
         Collections.reverse(sortedScores);
 
-        IO.println("\nDescending:");
+        IO.println("Descending:");
         IO.println(sortedScores);
     }
 
 
-
-    public static void clearScores(ArrayList<Integer> scores) {
+    public static void clearScores(
+            ArrayList<Integer> scores) {
 
         scores.clear();
 
-        IO.println("\nAfter Clear:");
+        IO.println("After Clear:");
         IO.println(scores);
 
         IO.println("Is Empty: " + scores.isEmpty());
