@@ -1,101 +1,271 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class ScoreManagementSystem {
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
 
-        ArrayList<Integer> studentScores;
-        Integer choice;
-        Integer score;
-        Integer index;
+        ArrayList<Integer> scores = new ArrayList<>();
 
-        studentScores = new ArrayList<>();
+        scores.add(85);
+        scores.add(70);
+        scores.add(95);
+        scores.add(60);
+        scores.add(45);
+        scores.add(88);
+        scores.add(92);
+        scores.add(76);
+        scores.add(100);
+        scores.add(55);
+        scores.add(67);
+        scores.add(90);
+        scores.add(83);
+        scores.add(49);
+        scores.add(85);
 
-        studentScores.add(85);
-        studentScores.add(92);
-        studentScores.add(77);
-        studentScores.add(90);
-        studentScores.add(100);
-        studentScores.add(50);
-        studentScores.add(81);
-        studentScores.add(69);
-        studentScores.add(98);
-        studentScores.add(70);
+        IO.println("========== SCORE INFORMATION ==========");
+        displayScores(scores);
 
-        do {
+        IO.println("\n========== SCORE STATISTICS ==========");
+        displayStatistics(scores);
 
-            System.out.println("\n========== SCORE MANAGEMENT SYSTEM ==========");
-            System.out.println("1. Display Scores");
-            System.out.println("2. Analyze Scores");
-            System.out.println("3. Update Score");
-            System.out.println("4. Search Score");
-            System.out.println("5. Remove Score");
-            System.out.println("6. Sort Scores");
-            System.out.println("7. Exit");
-            System.out.print("Enter your choice: ");
+        IO.println("\n========== SCORE CLASSIFICATION ==========");
+        classifyScores(scores);
 
-            choice = sc.nextInt();
+        IO.print("\nEnter score to search: ");
+        Integer searchScore = sc.nextInt();
+        searchScore(scores, searchScore);
 
-            switch (choice) {
+        IO.print("\nEnter index to update: ");
+        Integer index = sc.nextInt();
 
-                case 1:
+        IO.print("Enter new score: ");
+        Integer newScore = sc.nextInt();
 
-                    displayScores(studentScores);
-                    break;
+        updateScore(scores, index, newScore);
 
-                case 2:
+        IO.println("\nUpdated Scores:");
+        displayScores(scores);
 
-                    analyzeScores(studentScores);
-                    break;
+        IO.print("\nEnter score value to remove: ");
+        Integer removeValue = sc.nextInt();
+        removeByValue(scores, removeValue);
 
-                case 3:
+        IO.println("\nScores After Removing By Value:");
+        displayScores(scores);
 
-                    System.out.print("Enter Index: ");
-                    index = sc.nextInt();
+        IO.print("\nEnter index to remove: ");
+        Integer removeIndex = sc.nextInt();
+        removeByIndex(scores, removeIndex);
 
-                    System.out.print("Enter New Score: ");
-                    score = sc.nextInt();
+        IO.println("\nScores After Removing By Index:");
+        displayScores(scores);
 
-                    updateScore(studentScores, index, score);
-                    break;
+        sortAndReverse(scores);
 
-                case 4:
 
-                    System.out.print("Enter Score To Search: ");
-                    score = sc.nextInt();
-
-                    searchScore(studentScores, score);
-                    break;
-
-                case 5:
-
-                    System.out.print("Enter Index To Remove: ");
-                    index = sc.nextInt();
-
-                    removeScore(studentScores, index);
-                    break;
-
-                case 6:
-
-                    sortScores(studentScores);
-                    break;
-
-                case 7:
-
-                    System.out.println("Program Ended.");
-                    break;
-
-                default:
-
-                    System.out.println("Invalid Menu Choice.");
-            }
-
-        } while (choice != 7);
+        clearScores(scores);
 
         sc.close();
     }
 
-}
+
+
+    public static void displayScores(ArrayList<Integer> scores) {
+
+        IO.println("Total Scores: " + scores.size());
+
+        for (Integer i = 0; i < scores.size(); i++) {
+
+            IO.println("Score " + i + ": " + scores.get(i));
+        }
+    }
+
+
+
+    public static void displayStatistics(ArrayList<Integer> scores) {
+
+        Integer total = 0;
+        Integer highest = scores.get(0);
+        Integer lowest = scores.get(0);
+
+        for (Integer score : scores) {
+
+            total += score;
+
+            if (score > highest) {
+
+                highest = score;
+            }
+
+            if (score < lowest) {
+
+                lowest = score;
+            }
+        }
+
+        Double average = (Double) total.doubleValue() / scores.size();
+
+        IO.println("Total Score: " + total);
+        IO.println("Average Score: " + average);
+        IO.println("Highest Score: " + highest);
+        IO.println("Lowest Score: " + lowest);
+    }
+
+
+
+    public static void classifyScores(ArrayList<Integer> scores) {
+
+        Integer passed = 0;
+        Integer failed = 0;
+        Integer excellent = 0;
+        Integer low = 0;
+
+        for (Integer score : scores) {
+
+            if (score >= 60) {
+
+                passed++;
+            } else {
+
+                failed++;
+            }
+
+            if (score >= 90) {
+
+                excellent++;
+            }
+
+            if (score < 50) {
+
+                low++;
+            }
+        }
+
+        IO.println("Passed: " + passed);
+        IO.println("Failed: " + failed);
+        IO.println("Excellent: " + excellent);
+        IO.println("Low Grades: " + low);
+    }
+
+
+    public static void searchScore(
+            ArrayList<Integer> scores,
+            Integer value) {
+
+        Boolean found = false;
+        Integer firstIndex = -1;
+        Integer occurrences = 0;
+
+        for (Integer i = 0; i < scores.size(); i++) {
+
+            if (scores.get(i).equals(value)) {
+
+                if (!found) {
+
+                    firstIndex = i;
+                    found = true;
+                }
+
+                occurrences++;
+            }
+        }
+
+        if (found) {
+
+            IO.println("Score Found.");
+            IO.println("First Position: " + firstIndex);
+            IO.println("Occurrences: " + occurrences);
+
+        } else {
+
+            IO.println("Score not found.");
+        }
+    }
+
+
+
+    public static void updateScore(
+            ArrayList<Integer> scores,
+            Integer index,
+            Integer newScore) {
+
+        if (index >= 0 && index < scores.size()) {
+
+            scores.set(index, newScore);
+
+            IO.println("Score updated successfully.");
+
+        } else {
+
+            IO.println("Invalid index.");
+        }
+    }
+
+
+
+    public static void removeByValue(
+            ArrayList<Integer> scores,
+            Integer value) {
+
+        if (scores.remove(value)) {
+
+            IO.println("Score removed successfully.");
+
+        } else {
+
+            IO.println("Score not found.");
+        }
+    }
+
+
+
+    public static void removeByIndex(
+            ArrayList<Integer> scores,
+            Integer index) {
+
+        if (index >= 0 && index < scores.size()) {
+
+            scores.remove((int) index);
+
+            IO.println("Score removed successfully.");
+
+        } else {
+
+            IO.println("Invalid index.");
+        }
+    }
+
+
+
+    public static void sortAndReverse(ArrayList<Integer> scores) {
+
+        ArrayList<Integer> sortedScores = new ArrayList<>(scores);
+
+        Collections.sort(sortedScores);
+
+        IO.println("\nAscending:");
+        IO.println(sortedScores);
+
+        Collections.reverse(sortedScores);
+
+        IO.println("\nDescending:");
+        IO.println(sortedScores);
+    }
+
+
+
+    public static void clearScores(ArrayList<Integer> scores) {
+
+        scores.clear();
+
+        IO.println("\nAfter Clear:");
+        IO.println(scores);
+
+        IO.println("Is Empty: " + scores.isEmpty());
+    }
+
 }
