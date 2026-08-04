@@ -256,7 +256,6 @@ public class ArrayOperationsSystem {
                 IO.print(", ");
             }
         }
-
         IO.println("]");
     }
 }

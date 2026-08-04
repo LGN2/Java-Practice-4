@@ -131,7 +131,6 @@ public class ScoreManagementSystem {
         sc.close();
     }
 
-
     public static void displayScores(ArrayList<Integer> scores) {
 
         IO.println("Total Scores: " + scores.size());
@@ -141,7 +140,6 @@ public class ScoreManagementSystem {
             IO.println("Score " + i + ": " + scores.get(i));
         }
     }
-
 
     public static void displayStatistics(ArrayList<Integer> scores) {
 
@@ -177,7 +175,6 @@ public class ScoreManagementSystem {
         IO.println("Highest Score: " + highest);
         IO.println("Lowest Score: " + lowest);
     }
-
 
     public static void classifyScores(ArrayList<Integer> scores) {
 
@@ -220,7 +217,6 @@ public class ScoreManagementSystem {
         IO.println("Low Grades: " + low);
     }
 
-
     public static void searchScore(
             ArrayList<Integer> scores,
             Integer value) {
@@ -261,7 +257,6 @@ public class ScoreManagementSystem {
         }
     }
 
-
     public static void updateScore(
             ArrayList<Integer> scores,
             Integer index,
@@ -285,7 +280,6 @@ public class ScoreManagementSystem {
         }
     }
 
-
     public static void removeByValue(
             ArrayList<Integer> scores,
             Integer value) {
@@ -305,7 +299,6 @@ public class ScoreManagementSystem {
             IO.println("Score not found.");
         }
     }
-
 
     public static void removeByIndex(
             ArrayList<Integer> scores,
@@ -329,7 +322,6 @@ public class ScoreManagementSystem {
         }
     }
 
-
     public static void sortAndReverse(
             ArrayList<Integer> scores) {
 
@@ -352,8 +344,7 @@ public class ScoreManagementSystem {
         IO.println("Descending:");
         IO.println(sortedScores);
     }
-
-
+    
     public static void clearScores(
             ArrayList<Integer> scores) {
 

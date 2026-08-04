@@ -14,7 +14,6 @@ public class StudentManagementSystem {
         Integer index;
         String studentName;
 
-        // Add 10 students
         students.add("Ali");
         students.add("Sara");
         students.add("Omar");
