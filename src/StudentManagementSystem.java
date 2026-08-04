@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class StudentManagementSystem {
@@ -192,5 +193,9 @@ public class StudentManagementSystem {
         return studentCount;
     }
 
-    
+    public static void sortStudents(
+            String[] studentNames,
+            Integer studentCount) {
+        Arrays.sort(studentNames, 0, studentCount);
+    }
 }
