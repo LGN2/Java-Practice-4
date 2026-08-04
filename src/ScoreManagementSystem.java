@@ -26,6 +26,109 @@ public class ScoreManagementSystem {
         scores.add(49);
         scores.add(85);
 
+        Integer choice;
+        do {
+
+            IO.println("\n========== SCORE MANAGEMENT SYSTEM ==========");
+            IO.println("1. Display Scores");
+            IO.println("2. Display Statistics");
+            IO.println("3. Score Classification");
+            IO.println("4. Search Score");
+            IO.println("5. Update Score");
+            IO.println("6. Remove Score by Value");
+            IO.println("7. Remove Score by Index");
+            IO.println("8. Sort and Reverse Scores");
+            IO.println("9. Clear All Scores");
+            IO.println("10. Exit");
+
+            IO.print("Enter your choice: ");
+            choice = sc.nextInt();
+
+            switch (choice) {
+
+                case 1:
+
+                    displayScores(scores);
+                    break;
+
+                case 2:
+
+                    displayStatistics(scores);
+                    break;
+
+                case 3:
+
+                    classifyScores(scores);
+                    break;
+
+                case 4:
+
+                    IO.print("Enter score to search: ");
+                    Integer searchScore = sc.nextInt();
+
+                    searchScore(scores, searchScore);
+                    break;
+
+                case 5:
+
+                    IO.print("Enter index: ");
+                    Integer index = sc.nextInt();
+
+                    IO.print("Enter new score: ");
+                    Integer newScore = sc.nextInt();
+
+                    updateScore(scores, index, newScore);
+
+                    IO.println("Updated Scores:");
+                    displayScores(scores);
+                    break;
+
+                case 6:
+
+                    IO.print("Enter score value to remove: ");
+                    Integer removeValue = sc.nextInt();
+
+                    removeByValue(scores, removeValue);
+
+                    IO.println("Updated Scores:");
+                    displayScores(scores);
+                    break;
+
+                case 7:
+
+                    IO.print("Enter index to remove: ");
+                    Integer removeIndex = sc.nextInt();
+
+                    removeByIndex(scores, removeIndex);
+
+                    IO.println("Updated Scores:");
+                    displayScores(scores);
+                    break;
+
+                case 8:
+
+                    sortAndReverse(scores);
+                    break;
+
+                case 9:
+
+                    clearScores(scores);
+                    break;
+
+                case 10:
+
+                    IO.println("Program Ended.");
+                    break;
+
+                default:
+
+                    IO.println("Invalid Choice.");
+            }
+
+        } while (choice != 10);
+
+        sc.close();
+
         IO.println("========== SCORE INFORMATION ==========");
         displayScores(scores);
 
