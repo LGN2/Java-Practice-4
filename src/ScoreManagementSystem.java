@@ -94,7 +94,7 @@ public class ScoreManagementSystem {
 
         } while (choice != 7);
 
-        sc.close(); 
+        sc.close();
     }
 
 }

@@ -5,10 +5,14 @@ public class ArrayOperationsSystem {
 
     public static void main(String[] args) {
 
-
         Scanner sc = new Scanner(System.in);
 
-        Integer[] numbers;
+        Integer[] numbers = {
+                45, 12, -5, 90, 33,
+                12, 0, 67, -20, 88,
+                45, 100, 7, -3, 55
+        };
+
         Integer searchNumber;
         Integer updateIndex;
         Integer updateValue;
@@ -18,10 +22,13 @@ public class ArrayOperationsSystem {
         Integer highestNumber;
         Integer lowestNumber;
 
-        numbers = new Integer[]{45, 12, 78, 34, 90, 23, 56, 10, 67, 89};
+        IO.println("========== ARRAY INFORMATION ==========");
+        IO.println("Total Elements: " + numbers.length);
+        IO.println("First Element: " + numbers[0]);
+        IO.println("Last Element: " + numbers[numbers.length - 1]);
 
-        IO.println("Original Array:");
-        displayArray(numbers);
+        IO.println("\nArray Elements:");
+        displayArrayWithIndexes(numbers);
 
         sum = calculateSum(numbers);
         average = calculateAverage(sum, numbers.length);
@@ -29,17 +36,20 @@ public class ArrayOperationsSystem {
         lowestNumber = findLowest(numbers);
 
         IO.println("\n========== ARRAY STATISTICS ==========");
-        IO.println("Sum: " + sum);
-        IO.println("Average: " + average);
-        IO.println("Highest Number: " + highestNumber);
-        IO.println("Lowest Number: " + lowestNumber);
+        IO.println("Sum = " + sum);
+        IO.println("Average = " + average);
+        IO.println("Maximum = " + highestNumber);
+        IO.println("Minimum = " + lowestNumber);
+
+        IO.println("\n========== NUMBER CLASSIFICATION ==========");
+        classifyNumbers(numbers);
 
         IO.print("\nEnter number to search: ");
         searchNumber = sc.nextInt();
 
         searchNumber(numbers, searchNumber);
 
-        IO.print("\nEnter index to update (0-9): ");
+        IO.print("\nEnter index to update: ");
         updateIndex = sc.nextInt();
 
         IO.print("Enter new value: ");
@@ -47,17 +57,23 @@ public class ArrayOperationsSystem {
 
         updateArray(numbers, updateIndex, updateValue);
 
-        IO.println("\nArray After Updating:");
+        IO.println("\nUpdated Array:");
         displayArray(numbers);
 
-        reverseArray(numbers);
+        IO.println("\n========== REVERSE ARRAY ==========");
+        displayReverse(numbers);
 
-        IO.println("\nArray After Reversing:");
-        displayArray(numbers);
+        IO.println("\n========== SORTED COPY ==========");
+        Integer[] sortedNumbers = Arrays.copyOf(numbers, numbers.length);
 
-        sortArray(numbers);
+        Arrays.sort(sortedNumbers);
 
-        IO.println("\nArray After Sorting:");
+        displayArray(sortedNumbers);
+
+        IO.println("Smallest value: " + sortedNumbers[0]);
+        IO.println("Largest value: " + sortedNumbers[sortedNumbers.length - 1]);
+
+        IO.println("\n========== ORIGINAL ARRAY ==========");
         displayArray(numbers);
 
         sc.close();
@@ -65,14 +81,27 @@ public class ArrayOperationsSystem {
 
     public static void displayArray(Integer[] numbers) {
 
-        for (Integer number : numbers) {
+        IO.print("[");
 
-            IO.print(number + " ");
+        for (Integer i = 0; i < numbers.length; i++) {
+
+            IO.print(numbers[i]);
+
+            if (i < numbers.length - 1) {
+                IO.print(", ");
+            }
         }
 
-        IO.println();
+        IO.println("]");
     }
 
+    public static void displayArrayWithIndexes(Integer[] numbers) {
+
+        for (Integer i = 0; i < numbers.length; i++) {
+
+            IO.println("Index " + i + " = " + numbers[i]);
+        }
+    }
 
     public static Integer calculateSum(Integer[] numbers) {
 
@@ -86,78 +115,121 @@ public class ArrayOperationsSystem {
         return sum;
     }
 
-
     public static Double calculateAverage(
             Integer sum,
             Integer size) {
-//          Double result = Integer.valueOf(sum / size).doubleValue();
-//          return result;
+
         return sum.doubleValue() / size.doubleValue();
     }
 
-
     public static Integer findHighest(Integer[] numbers) {
 
-        Integer highestNumber = numbers[0];
+        Integer highest = numbers[0];
 
         for (Integer number : numbers) {
 
-            if (number > highestNumber) {
+            if (number > highest) {
 
-                highestNumber = number;
+                highest = number;
             }
         }
 
-        return highestNumber;
+        return highest;
     }
-
 
     public static Integer findLowest(Integer[] numbers) {
 
-        Integer lowestNumber = numbers[0];
+        Integer lowest = numbers[0];
 
         for (Integer number : numbers) {
 
-            if (number < lowestNumber) {
+            if (number < lowest) {
 
-                lowestNumber = number;
+                lowest = number;
             }
         }
 
-        return lowestNumber;
+        return lowest;
     }
 
+    public static void classifyNumbers(Integer[] numbers) {
+
+        Integer positive = 0;
+        Integer negative = 0;
+        Integer zero = 0;
+        Integer even = 0;
+        Integer odd = 0;
+
+        for (Integer number : numbers) {
+
+            if (number > 0) {
+
+                positive++;
+
+            } else if (number < 0) {
+
+                negative++;
+
+            } else {
+
+                zero++;
+            }
+
+            if (number % 2 == 0) {
+
+                even++;
+
+            } else {
+
+                odd++;
+            }
+        }
+
+        IO.println("Positive Numbers: " + positive);
+        IO.println("Negative Numbers: " + negative);
+        IO.println("Zeros: " + zero);
+        IO.println("Even Numbers: " + even);
+        IO.println("Odd Numbers: " + odd);
+    }
 
     public static void searchNumber(
             Integer[] numbers,
             Integer searchNumber) {
 
         Boolean found = false;
+        Integer firstIndex = -1;
+        Integer occurrences = 0;
 
         for (Integer i = 0; i < numbers.length; i++) {
 
             if (numbers[i].equals(searchNumber)) {
 
-                IO.println("Number found at index: " + i);
+                if (!found) {
 
-                found = true;
-                break;
+                    firstIndex = i;
+                    found = true;
+                }
+
+                occurrences++;
             }
         }
 
+        if (found) {
 
-        if (!found) {
+            IO.println("Number found.");
+            IO.println("First index: " + firstIndex);
+            IO.println("Occurrences: " + occurrences);
+
+        } else {
 
             IO.println("Number not found.");
         }
     }
 
-
     public static void updateArray(
             Integer[] numbers,
             Integer index,
             Integer newValue) {
-
 
         if (index >= 0 && index < numbers.length) {
 
@@ -171,28 +243,20 @@ public class ArrayOperationsSystem {
         }
     }
 
+    public static void displayReverse(Integer[] numbers) {
 
-    public static void reverseArray(Integer[] numbers) {
+        IO.print("[");
 
-        Integer start = 0;
-        Integer end = numbers.length - 1;
+        for (Integer i = numbers.length - 1; i >= 0; i--) {
 
-        while (start < end) {
+            IO.print(numbers[i]);
 
-            Integer temp = numbers[start];
+            if (i > 0) {
 
-            numbers[start] = numbers[end];
-
-            numbers[end] = temp;
-
-            start++;
-            end--;
+                IO.print(", ");
+            }
         }
+
+        IO.println("]");
     }
-
-    public static void sortArray(Integer[] numbers) {
-
-        Arrays.sort(numbers);
-    }
-
 }
