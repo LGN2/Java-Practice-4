@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ScoreManagementSystem {
@@ -5,7 +6,11 @@ public class ScoreManagementSystem {
 
         Scanner sc = new Scanner(System.in);
 
-        Integer[] studentScores;
-        Integer studentScore;
+        ArrayList<Integer> studentScores;
+        Integer choice;
+        Integer score;
+        Integer index;
+
+        
     }
 }
