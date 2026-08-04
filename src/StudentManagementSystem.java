@@ -6,7 +6,7 @@ public class StudentManagementSystem {
         Scanner sc = new Scanner(System.in);
 
         String[] studentNames;
-        Integer studentCount;
+        Integer studentCount = 0;
         Integer choice;
         String studentName;
         Integer index;
