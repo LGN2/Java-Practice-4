@@ -10,19 +10,19 @@ public class ProductInventorySystem {
         //p1
         productNames.add("Laptop");
         productQuantities.add(5);
-        productPrices.add(750.50);
+        productPrices.add(750.10);
         //p2
-        productNames.add("Laptop");
-        productQuantities.add(5);
-        productPrices.add(750.50);
+        productNames.add("Iphone");
+        productQuantities.add(10);
+        productPrices.add(550.20);
         //p3
-        productNames.add("Laptop");
-        productQuantities.add(5);
-        productPrices.add(750.50);
+        productNames.add("MacBook");
+        productQuantities.add(20);
+        productPrices.add(1750.30);
         //p4
-        productNames.add("Laptop");
-        productQuantities.add(5);
-        productPrices.add(750.50);
+        productNames.add("TV");
+        productQuantities.add(40);
+        productPrices.add(450.40);
         //p5
         productNames.add("Laptop");
         productQuantities.add(5);
@@ -47,6 +47,6 @@ public class ProductInventorySystem {
         productNames.add("Laptop");
         productQuantities.add(5);
         productPrices.add(750.50);
-       
+
     }
 }
