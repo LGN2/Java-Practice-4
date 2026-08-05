@@ -24,29 +24,29 @@ public class ProductInventorySystem {
         productQuantities.add(40);
         productPrices.add(450.40);
         //p5
-        productNames.add("Laptop");
-        productQuantities.add(5);
-        productPrices.add(750.50);
+        productNames.add("Ipad");
+        productQuantities.add(50);
+        productPrices.add(850.50);
         //p6
-        productNames.add("Laptop");
-        productQuantities.add(5);
-        productPrices.add(750.50);
+        productNames.add("Watch");
+        productQuantities.add(60);
+        productPrices.add(650.60);
         //p7
-        productNames.add("Laptop");
-        productQuantities.add(5);
-        productPrices.add(750.50);
+        productNames.add("Speaker");
+        productQuantities.add(4);
+        productPrices.add(150.10);
         //p8
-        productNames.add("Laptop");
-        productQuantities.add(5);
-        productPrices.add(750.50);
+        productNames.add("Keyboard");
+        productQuantities.add(15);
+        productPrices.add(50.90);
         //p9
-        productNames.add("Laptop");
-        productQuantities.add(5);
-        productPrices.add(750.50);
+        productNames.add("Mouse");
+        productQuantities.add(15);
+        productPrices.add(40.90);
         //p10
-        productNames.add("Laptop");
-        productQuantities.add(5);
-        productPrices.add(750.50);
+        productNames.add("Monitor");
+        productQuantities.add(20);
+        productPrices.add(250.80);
 
     }
 }
