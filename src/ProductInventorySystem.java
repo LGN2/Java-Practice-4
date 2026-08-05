@@ -162,8 +162,45 @@ public class ProductInventorySystem {
 
                     IO.println("Enter Product Index To Remove: ");
                     Integer removeIndex = sc.nextInt();
+
+                    removeProduct(
+                            productNames,
+                            productQuantities,
+                            productPrices,
+                            removeIndex
+                    );
+                    break;
+
+                case 8:
+
+                    sortByName(
+                            productNames,
+                            productQuantities,
+                            productPrices
+                    );
+                    break;
+
+                case 9:
+
+                    sortByPrice(
+                            productNames,
+                            productQuantities,
+                            productPrices
+                    );
+                    break;
+
+                case 10:
+
+                    IO.println("Program Ended.");
+                    break;
+
+                default:
+
+                    IO.println("Invalid Choice.");
             }
-        }
+        }while(choice != 10);
+
+        sc.close();
     }
 
     public static void displayInventory() {
