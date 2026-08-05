@@ -1,12 +1,15 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class ProductInventorySystem {
     public static void main(String[] args){
 
-        ArrayList<String> productNames = null;
-        ArrayList<Integer> productQuantities = null;
-        ArrayList<Double> productPrices = null;
+        Scanner sc = new Scanner(System.in);
+
+        ArrayList<String> productNames = new ArrayList<>();
+        ArrayList<Integer> productQuantities = new ArrayList<>();
+        ArrayList<Double> productPrices = new ArrayList<>();
         //p1
         productNames.add("Laptop");
         productQuantities.add(5);
@@ -48,5 +51,26 @@ public class ProductInventorySystem {
         productQuantities.add(20);
         productPrices.add(250.80);
 
+        Integer choice;
+
+        do {
+
+            System.out.println("\n========== PRODUCT INVENTORY SYSTEM ==========");
+            System.out.println("1. Display Inventory");
+            System.out.println("2. Add Product");
+            System.out.println("3. Update Product");
+            System.out.println("4. Search Product");
+            System.out.println("5. Inventory Statistics");
+            System.out.println("6. Stock Status");
+            System.out.println("7. Remove Product");
+            System.out.println("8. Sort Products By Name");
+            System.out.println("9. Sort Products By Price");
+            System.out.println("10. Exit");
+
+
+            System.out.print("Enter your choice: ");
+            choice = sc.nextInt();
+            sc.nextLine();
+        }
     }
 }
