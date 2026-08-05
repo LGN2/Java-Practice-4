@@ -55,20 +55,20 @@ public class ProductInventorySystem {
 
         do {
 
-            System.out.println("\n========== PRODUCT INVENTORY SYSTEM ==========");
-            System.out.println("1. Display Inventory");
-            System.out.println("2. Add Product");
-            System.out.println("3. Update Product");
-            System.out.println("4. Search Product");
-            System.out.println("5. Inventory Statistics");
-            System.out.println("6. Stock Status");
-            System.out.println("7. Remove Product");
-            System.out.println("8. Sort Products By Name");
-            System.out.println("9. Sort Products By Price");
-            System.out.println("10. Exit");
+            IO.println("\n========== PRODUCT INVENTORY SYSTEM ==========");
+            IO.println("1. Display Inventory");
+            IO.println("2. Add Product");
+            IO.println("3. Update Product");
+            IO.println("4. Search Product");
+            IO.println("5. Inventory Statistics");
+            IO.println("6. Stock Status");
+            IO.println("7. Remove Product");
+            IO.println("8. Sort Products By Name");
+            IO.println("9. Sort Products By Price");
+            IO.println("10. Exit");
 
 
-            System.out.print("Enter your choice: ");
+            IO.print("Enter your choice: ");
             choice = sc.nextInt();
             sc.nextLine();
         }
