@@ -71,6 +71,45 @@ public class ProductInventorySystem {
             IO.print("Enter your choice: ");
             choice = sc.nextInt();
             sc.nextLine();
+
+            switch (choice) {
+
+                case 1:
+                    displayInventory(
+                            productNames,
+                            productQuantities,
+                            productPrices
+                    );
+                    break;
+
+                case 2:
+
+                    IO.println("Enter Product Name: ");
+                    String name = sc.nextLine();
+
+                    IO.println("Enter Quantity: ");
+                    String quantity = sc.nextLine();
+
+                    IO.println("Enter Price: ");
+                    String price = sc.nextLine();
+
+                    addProduct(
+                            productNames,
+                            productQuantities,
+                            productPrices,
+                            name,
+                            quantity,
+                            price
+                    );
+                    break;
+
+                case 3:
+                    
+            }
         }
+    }
+
+    public static void displayInventory() {
+
     }
 }
