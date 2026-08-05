@@ -344,7 +344,7 @@ public class ScoreManagementSystem {
         IO.println("Descending:");
         IO.println(sortedScores);
     }
-    
+
     public static void clearScores(
             ArrayList<Integer> scores) {
 
