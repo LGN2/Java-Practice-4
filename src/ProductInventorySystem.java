@@ -111,6 +111,57 @@ public class ProductInventorySystem {
 
                     IO.println("Enter New Product Name: ");
                     String newName = sc.nextLine();
+
+                    IO.println("Enter New Quantity: ");
+                    Integer newQuantity = sc.nextInt();
+
+                    IO.println("Enter New Price: ");
+                    Double newPrice = sc.nextDouble();
+
+                    updateProduct(
+                            productNames,
+                            productQuantities,
+                            productPrices,
+                            updateIndex,
+                            newName,
+                            newQuantity,
+                            newPrice
+                    );
+                    break;
+
+                case 4:
+
+                    IO.println("Enter Product Name: ");
+                    String searchName = sc.nextLine();
+
+                    searchProduct(
+                            productNames,
+                            productQuantities,
+                            productPrices,
+                            searchName
+                    );
+                    break;
+
+                case 5:
+
+                    inventoryStatistics(
+                            productNames,
+                            productQuantities,
+                            productPrices
+                    );
+                    break;
+
+                case 6:
+
+                    stockStatus(
+                            productNames,
+                            productQuantities
+                    );
+                    break;
+                case 7:
+
+                    IO.println("Enter Product Index To Remove: ");
+                    Integer removeIndex = sc.nextInt();
             }
         }
     }
