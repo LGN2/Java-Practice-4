@@ -104,7 +104,13 @@ public class ProductInventorySystem {
                     break;
 
                 case 3:
-                    
+
+                    IO.println("Enter Product Index: ");
+                    Integer updateIndex = sc.nextInt();
+                    sc.nextLine();
+
+                    IO.println("Enter New Product Name: ");
+                    String newName = sc.nextLine();
             }
         }
     }
