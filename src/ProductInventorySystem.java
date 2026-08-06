@@ -211,7 +211,7 @@ public class ProductInventorySystem {
         IO.println("\n========== INVENTORY ==========");
 
 
-        for(Integer i = 0; i < names.size(); i++) {
+        for (Integer i = 0; i < names.size(); i++) {
 
 
             IO.println("Product " + i);
@@ -221,6 +221,22 @@ public class ProductInventorySystem {
 
             IO.println();
 
-
         }
+    }
+
+    public static void addProduct(
+            ArrayList<String> names,
+            ArrayList<Integer> quantities,
+            ArrayList<Double> prices,
+            String name,
+            Integer quantity,
+            Double price) {
+        names.add(name);
+        quantities.add(quantity);
+        prices.add(price);
+
+        IO.println("product added successfully.");
+    }
+
+    
 }
