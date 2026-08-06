@@ -203,7 +203,24 @@ public class ProductInventorySystem {
         sc.close();
     }
 
-    public static void displayInventory() {
+    public static void displayInventory(
+            ArrayList<String> names,
+            ArrayList<Integer> quantities,
+            ArrayList<Double> prices) {
 
-    }
+        IO.println("\n========== INVENTORY ==========");
+
+
+        for(Integer i = 0; i < names.size(); i++) {
+
+
+            IO.println("Product " + i);
+            IO.println("Name: " + names.get(i));
+            IO.println("Quantity: " + quantities.get(i));
+            IO.println("Price: " + prices.get(i));
+
+            IO.println();
+
+
+        }
 }
